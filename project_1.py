@@ -54,7 +54,7 @@ def subtract(matrix1,matrix2):
 	matrix_sub = []
 
 	for n in matrix_values1:
-		matrix_sub[index] = n - matrix_values2[index]
+		matrix_sub.append(n - matrix_values2[index])
 		index+=1
 
 	row_start = 0
@@ -74,11 +74,14 @@ def subtract(matrix1,matrix2):
 		file.write(matrix_string)
 
 
+def transpose(matrix):
+
 
 
 print_and_write("Amatrix")
 print_and_write("Bmatrix")
 subtract("Amatrix","Bmatrix")
+transpose("CS2300P1aAmos.calc")
 
 
 
