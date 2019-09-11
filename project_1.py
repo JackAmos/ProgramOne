@@ -16,16 +16,20 @@ def print_and_write(matrix):
 
 	row_start = 0
 	row_end = matrix_column
+		
+	matrix_string = ""
+
+	while row_start < matrix_row*matrix_column:
+		matrix_string += str(matrix_values[row_start:row_end]) + "\n"
+		row_start+=matrix_column
+		row_end+=matrix_column
+
+	print(matrix_string)
 
 	file_name = "CS2300P1aAmos.out"+matrix[0]
 
-	with open(file_name,"w") as file:
-		
-
-	while row_start < matrix_row*matrix_column:
-		print(matrix_values[row_start:row_end])
-		row_start+=matrix_column
-		row_end+=matrix_column
+	with open(file_name,"w+") as file:
+		file.write(matrix_string)
 
 print_and_write("Amatrix")
 print_and_write("Bmatrix")
