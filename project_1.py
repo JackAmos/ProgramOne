@@ -24,7 +24,10 @@ def print_and_write(matrix):
 		row_start+=matrix_column
 		row_end+=matrix_column
 
+	matrix_string = matrix_string.replace(",","").replace("[","").replace("]","")
 	print(matrix_string)
+
+	matrix_string = str(matrix_row)+" "+str(matrix_column)+" "+matrix_string
 
 	file_name = "CS2300P1aAmos.out"+matrix[0]
 
@@ -66,18 +69,52 @@ def subtract(matrix1,matrix2):
 		row_start+=matrix_column
 		row_end+=matrix_column
 
+
+	matrix_string = matrix_string.replace(",","").replace("[","").replace("]","")
 	print(matrix_string)
 
-	file_name = "CS2300P1aAmos.calc"
+	matrix_string = str(matrix_row)+" "+str(matrix_column)+" "+matrix_string
 
-	with open(file_name,"w+") as file:
+	with open("CS2300P1aAmos.calc","w+") as file:
 		file.write(matrix_string)
 
 
 def transpose(matrix):
+	
+	with open(matrix,'r') as file:
+		contents = file.read()
+
+	matrix_values = [int(x) for x in contents.split()]
+
+	matrix_row = matrix_values.pop(0)
+	matrix_column = matrix_values.pop(0)
+
+	index = 0
+	column_iterator = 1
+	matrix_string = ""
+
+	while column_iterator <= matrix_row:
+
+		if index >= matrix_row*matrix_column:
+			index = column_iterator
+			column_iterator+=1
+			matrix_string = matrix_string+"\n"
+		else:
+			matrix_string = matrix_string+" "+str(matrix_values[index])
+			index+=matrix_column
+
+	print(matrix_string)
+
+	matrix_string = str(matrix_row)+" "+str(matrix_column)+matrix_string
+
+	with open("CS2300P1aAmos.trans","w+") as file:
+		file.write(matrix_string)
 
 
 
+
+
+#calling functions
 print_and_write("Amatrix")
 print_and_write("Bmatrix")
 subtract("Amatrix","Bmatrix")
