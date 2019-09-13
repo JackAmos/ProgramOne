@@ -73,7 +73,7 @@ def subtract(matrix1,matrix2):
 
 	#places subtracted value in new matrix
 	for n in matrix_values1:
-		matrix_sub.append(n - matrix_values2[index])
+		matrix_sub.append(5*n - matrix_values2[index])
 		index+=1
 
 	row_start = 0
